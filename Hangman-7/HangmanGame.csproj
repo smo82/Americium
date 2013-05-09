@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainClass.cs" />
+    <Compile Include="GameEngine.cs" />
     <Compile Include="TopPlayer.cs" />
     <Compile Include="Word.cs" />
   </ItemGroup>

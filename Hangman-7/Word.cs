@@ -3,74 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hangman
+internal class Word
 {
-    class Word
+    private string w;
+    private System.Text.StringBuilder PrintedWord = new System.Text.StringBuilder();
+
+    public void SetPlayedWord(string theWord)
     {
-        private string w;
-        private System.Text.StringBuilder PrintedWord = new System.Text.StringBuilder();
+        this.w = theWord;
+    }
 
-        public void SetPlayedWord(string theWord)
+    public string GetPlayedWord()
+    {
+        return this.w;
+    }
+
+    public void SetPrintedWord(System.Text.StringBuilder theWord)
+    {
+        this.PrintedWord = theWord;
+    }
+
+    public string GetPrintedWord()
+    {
+        return this.PrintedWord.ToString();
+    }
+
+    public bool Isletter(char Theletter)
+    {
+        if (char.ToLower(Theletter) >= 'a' && char.ToLower(Theletter) <= 'z')
+            return true;
+        else
+            return false;
+    }
+
+    public bool CheckForLetter(char TheLetter)
+    {
+        if (w.Contains(char.ToLower(TheLetter)))
         {
-            this.w = theWord;
+            return true;
         }
+        else return false;
+    }
 
-        public string GetPlayedWord()
-        {
-            return this.w;
-        }
+    public string WriteTheLetter(char TheLetter)
+    {
 
-        public void SetPrintedWord(System.Text.StringBuilder theWord)
+        for (int WordLenght = 0; WordLenght < w.Length - 1; WordLenght++)
         {
-            this.PrintedWord = theWord;
-        }
-
-        public string GetPrintedWord()
-        {
-            return this.PrintedWord.ToString();
-        }
-
-        public bool Isletter(char Theletter)
-        {
-            if (char.ToLower(Theletter) >= 'a' && char.ToLower(Theletter) <= 'z')
-                return true;
-            else
-                return false;
-        }
-
-        public bool CheckForLetter(char TheLetter)
-        {
-            if (w.Contains(char.ToLower(TheLetter)))
+            if (this.w.IndexOf(char.ToLower(TheLetter), WordLenght) >= 0)
             {
-                return true;
+                this.PrintedWord[this.w.IndexOf(char.ToLower(TheLetter), WordLenght) * 2] = TheLetter;
             }
-            else return false;
         }
 
-        public string WriteTheLetter(char TheLetter)
+        return PrintedWord.ToString();
+    }
+
+    public int NumberOfInput(char TheLetter)
+    {
+        int Number = 0;
+        for (int WordLenght = 0; WordLenght < w.Length; WordLenght++)
         {
-
-            for (int WordLenght = 0; WordLenght < w.Length - 1; WordLenght++)
-            {
-                if (this.w.IndexOf(char.ToLower(TheLetter), WordLenght) >= 0)
-                {
-                    this.PrintedWord[this.w.IndexOf(char.ToLower(TheLetter), WordLenght) * 2] = TheLetter;
-                }
-            }
-
-            return PrintedWord.ToString();
-        }
-
-        public int NumberOfInput(char TheLetter)
-        {
-            int Number = 0;
-            for (int WordLenght = 0; WordLenght < w.Length; WordLenght++)
-            {
-                if (this.w[WordLenght].Equals(char.ToLower(TheLetter))) 
+            if (this.w[WordLenght].Equals(char.ToLower(TheLetter)))
                 Number++;
-            }
-            return Number;
         }
+        return Number;
     }
 }
 
