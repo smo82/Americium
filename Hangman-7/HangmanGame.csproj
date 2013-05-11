@@ -42,9 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameEngine.cs" />
+    <Compile Include="ConsoleInterface.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="HangmanMain.cs" />
+    <Compile Include="HighScoreBoard.cs" />
+    <Compile Include="IUserInterface.cs" />
+    <Compile Include="SingleLetterEventArgs.cs" />
     <Compile Include="TopPlayer.cs" />
     <Compile Include="Word.cs" />
+    <Compile Include="WordData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

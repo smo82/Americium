@@ -6,34 +6,23 @@ using System.Text;
 internal class Word
 {
     private string w;
-    private System.Text.StringBuilder PrintedWord = new System.Text.StringBuilder();
+    private StringBuilder PrintedWord = new StringBuilder();
 
-    public void SetPlayedWord(string theWord)
+    public Word(string word)
     {
-        this.w = theWord;
+        this.w = word;
+        string hiddenWord = GenerateHiddenWordString();
+        this.PrintedWord.Append(hiddenWord);
     }
 
     public string GetPlayedWord()
     {
         return this.w;
     }
-
-    public void SetPrintedWord(System.Text.StringBuilder theWord)
-    {
-        this.PrintedWord = theWord;
-    }
-
+    
     public string GetPrintedWord()
     {
         return this.PrintedWord.ToString();
-    }
-
-    public bool Isletter(char Theletter)
-    {
-        if (char.ToLower(Theletter) >= 'a' && char.ToLower(Theletter) <= 'z')
-            return true;
-        else
-            return false;
     }
 
     public bool CheckForLetter(char TheLetter)
@@ -59,7 +48,7 @@ internal class Word
         return PrintedWord.ToString();
     }
 
-    public int NumberOfInput(char TheLetter)
+    public int NumberOfMatches(char TheLetter)
     {
         int Number = 0;
         for (int WordLenght = 0; WordLenght < w.Length; WordLenght++)
@@ -68,6 +57,30 @@ internal class Word
                 Number++;
         }
         return Number;
+    }
+
+    private string GenerateHiddenWordString()
+    {
+        StringBuilder hiddenWord = new StringBuilder();
+        for (int WordLenght = 0; WordLenght < this.w.Length; WordLenght++)
+        {
+            //makes _ _ _ _ _...
+            hiddenWord.Append("_ ");
+        }
+        return hiddenWord.ToString();
+    }
+
+    public bool WordIsFound()
+    {
+        return !this.GetPrintedWord().Contains('_');
+    }
+
+    public char RevealLetter()
+    {
+        int FirstMissingLetter = this.GetPrintedWord().IndexOf('_');
+        char revealedLetter = this.GetPlayedWord()[FirstMissingLetter / 2];
+        this.WriteTheLetter(revealedLetter);
+        return revealedLetter;
     }
 }
 
