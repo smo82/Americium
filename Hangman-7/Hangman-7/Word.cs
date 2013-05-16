@@ -15,12 +15,12 @@ public class Word
         this.printedWord.Append(hiddenWord);
     }
 
-    public string GetPlayedWord()
+    public string GetWord()
     {
         return this.word;
     }
 
-    public string GetPrintedWord()
+    public string GetHiddenWord()
     {
         return this.printedWord.ToString();
     }
@@ -63,6 +63,19 @@ public class Word
         return result;
     }
 
+    public bool WordIsFound()
+    {
+        return !this.GetHiddenWord().Contains('_');
+    }
+
+    public char RevealLetter()
+    {
+        int firstMissingLetter = this.GetHiddenWord().IndexOf('_');
+        char revealedLetter = this.GetWord()[firstMissingLetter / 2];
+        this.WriteTheLetter(revealedLetter);
+        return revealedLetter;
+    }
+
     private string GenerateHiddenWordString()
     {
         StringBuilder hiddenWord = new StringBuilder();
@@ -70,20 +83,8 @@ public class Word
         {
             hiddenWord.Append("_ ");
         }
+        hiddenWord = hiddenWord.Remove(hiddenWord.Length - 1, 1);
         return hiddenWord.ToString();
-    }
-
-    public bool WordIsFound()
-    {
-        return !this.GetPrintedWord().Contains('_');
-    }
-
-    public char RevealLetter()
-    {
-        int firstMissingLetter = this.GetPrintedWord().IndexOf('_');
-        char revealedLetter = this.GetPlayedWord()[firstMissingLetter / 2];
-        //  this.WriteTheLetter(revealedLetter);
-        return revealedLetter;
     }
 }
 

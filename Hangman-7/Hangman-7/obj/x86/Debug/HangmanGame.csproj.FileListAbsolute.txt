@@ -3,3 +3,8 @@ H:\Documents and Settings\Simo\My Documents\Visual Studio 2010\Projects\Hangman-
 H:\Documents and Settings\Simo\My Documents\Visual Studio 2010\Projects\Hangman-7\Hangman-7\obj\x86\Debug\ResolveAssemblyReference.cache
 H:\Documents and Settings\Simo\My Documents\Visual Studio 2010\Projects\Hangman-7\Hangman-7\obj\x86\Debug\HangmanGame.exe
 H:\Documents and Settings\Simo\My Documents\Visual Studio 2010\Projects\Hangman-7\Hangman-7\obj\x86\Debug\HangmanGame.pdb
+H:\Documents and Settings\Simo\My Documents\GitHub\Americium\Hangman-7\Hangman-7\obj\x86\Debug\HangmanGame.exe
+H:\Documents and Settings\Simo\My Documents\GitHub\Americium\Hangman-7\Hangman-7\obj\x86\Debug\HangmanGame.pdb
+H:\Documents and Settings\Simo\My Documents\GitHub\Americium\Hangman-7\Hangman-7\bin\Debug\HangmanGame.exe
+H:\Documents and Settings\Simo\My Documents\GitHub\Americium\Hangman-7\Hangman-7\bin\Debug\HangmanGame.pdb
+H:\Documents and Settings\Simo\My Documents\GitHub\Americium\Hangman-7\Hangman-7\obj\x86\Debug\ResolveAssemblyReference.cache

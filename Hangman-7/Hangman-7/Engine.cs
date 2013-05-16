@@ -50,7 +50,7 @@ internal class Engine
 
             while (!currentWord.WordIsFound())
             {
-                this.userInterface.ProcessInput(new WordData(this.currentWord));
+                this.userInterface.GetUserInput(new WordData(this.currentWord));
                 if (this.restart)
                 {
                     this.restart = false;
@@ -66,13 +66,6 @@ internal class Engine
                 NotUseHelp = true;
             }
         }
-    }
-
-    private static string GetRandomWord()
-    {
-        Random RandomWord = new Random();
-        string PlayedWord = WORDS_REPOSITORY[RandomWord.Next(0, WORDS_REPOSITORY.Length)];
-        return PlayedWord;
     }
 
     public void ProcessSingleLetterEntered(SingleLetterEventArgs singleLetterEventArgs)
@@ -114,8 +107,8 @@ internal class Engine
             int highScoreCount = highScoreBoard.HighScoreCount;
             for (int playersNumber = 0; playersNumber < highScoreCount; playersNumber++)
             {
-                string playerScoreMessage = highScorePlayerList[playersNumber].PlayerScore.ToString() + " " +
-                                                highScorePlayerList[playersNumber].PlayerName;
+                string playerScoreMessage = highScorePlayerList[playersNumber].PlayerScore.ToString() 
+                    + " " + highScorePlayerList[playersNumber].PlayerName;
                 this.userInterface.WriteSingleOutputLine(playerScoreMessage);
             } 
         }
@@ -138,9 +131,16 @@ internal class Engine
         this.currentMistakesCount++;
     }
 
+    private static string GetRandomWord()
+    {
+        Random RandomWord = new Random();
+        string PlayedWord = WORDS_REPOSITORY[RandomWord.Next(0, WORDS_REPOSITORY.Length)];
+        return PlayedWord;
+    }
+
     private void ProcessWin()
     {
-        this.userInterface.WriteSingleOutputLine("The secret word is " + this.currentWord.GetPrintedWord());
+        this.userInterface.WriteSingleOutputLine("The secret word is " + this.currentWord.GetHiddenWord());
         this.userInterface.WriteSingleOutputLine("\nYou won with " + this.currentMistakesCount + " mistakes");
 
         bool BetterThanLast = highScoreBoard.IsResultHighScore(this.currentMistakesCount);

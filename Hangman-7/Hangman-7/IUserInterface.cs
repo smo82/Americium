@@ -1,6 +1,6 @@
 ﻿using System;
 
-internal interface IUserInterface
+public interface IUserInterface
 {
     event EventHandler SingleLetterEntered;
 
@@ -14,7 +14,7 @@ internal interface IUserInterface
 
     event EventHandler IncorrectInput;
 
-    void ProcessInput(WordData wordData);
+    void GetUserInput(WordData wordData);
 
     string ReadSingleInputLine();
 

@@ -1,14 +1,28 @@
 ﻿using System;
 using System.Text;
 
-internal class ConsoleInterface : IUserInterface
+public class ConsoleInterface : IUserInterface
 {
-    public void ProcessInput(WordData wordData)
+    public void GetUserInput(WordData wordData)
     {
         Console.WriteLine("The secret word is " + wordData.ToPrint);
 
         Console.Write("Enter your guess: ");
         string inputString = Console.ReadLine();
+        ProcessInput(inputString);
+    }
+
+    private void ProcessInput(string inputString)
+    {
+        if (inputString == null)
+        {
+            if (this.IncorrectInput != null)
+            {
+                this.IncorrectInput(this, new EventArgs());
+            }
+            return;
+        }
+
         char inputLetter = '-';
 
         if (inputString.Length == 1)

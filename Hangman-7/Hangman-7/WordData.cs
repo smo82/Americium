@@ -1,10 +1,10 @@
 ﻿using System;
 
-internal struct WordData
+public struct WordData
 {
     public WordData(Word originalWord) : this ()
     {
-        this.ToPrint = originalWord.GetPrintedWord();
+        this.ToPrint = originalWord.GetHiddenWord();
     }
 
     public string ToPrint { get; private set; }
