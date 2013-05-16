@@ -1,13 +1,9 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-
-namespace HangmanGameTest
+﻿namespace HangmanGameTest
 {
+    using System;
+    using System.IO;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class ConsoleIntefaceTest
     {
@@ -72,7 +68,7 @@ namespace HangmanGameTest
             Word currentWord = new Word("test");
             WordData currentWordDate = new WordData(currentWord);
 
-            string inputString = string.Format("top{0}", Environment.NewLine);
+            string inputString = string.Format("highscore{0}", Environment.NewLine);
             using (StringReader sr = new StringReader(inputString))
             {
                 Console.SetIn(sr);

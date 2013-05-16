@@ -1,11 +1,19 @@
-﻿using System;
-
+﻿/// <summary>
+/// This structure is used for passing the data from a Word object
+/// </summary>
 public struct WordData
 {
-    public WordData(Word originalWord) : this ()
+    /// <summary>
+    /// Initializes a new instance of the <see cref="WordData" /> struct.
+    /// </summary>
+    /// <param name="originalWord">The Word object that the current struct represents</param>
+    public WordData(Word originalWord) : this()
     {
-        this.ToPrint = originalWord.GetHiddenWord();
+        this.HiddenWord = originalWord.GetHiddenWord;
     }
 
-    public string ToPrint { get; private set; }
+    /// <summary>
+    /// Gets the hidden word
+    /// </summary>
+    public string HiddenWord { get; private set; }
 }

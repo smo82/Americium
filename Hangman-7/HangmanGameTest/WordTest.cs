@@ -1,20 +1,56 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace HangmanGameTest
+﻿namespace HangmanGameTest
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class WordTest
     {
+        [TestMethod]
+        public void WriteTheLetterTest()
+        {
+            Word word = new Word("array");
+            string expected = "a _ _ a _";
+            string actual = word.WriteTheLetter('a');
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void NumberOfMatchesTest()
+        {
+            Word word = new Word("array");
+            int expected = 2;
+            int actual = word.NumberOfMatches('a');
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void WordIsFoundTest()
+        {
+            Word word = new Word("array");
+            bool expected = true;
+            string currentPrint = word.WriteTheLetter('a');
+            currentPrint = word.WriteTheLetter('r');
+            currentPrint = word.WriteTheLetter('y');
+            bool actual = word.WordIsFound();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckForLetterTest()
+        {
+            Word word = new Word("array");
+            bool expected = true;
+            bool actual = word.CheckForLetter('a');
+            Assert.AreEqual(expected, actual);
+        }
+
         [TestMethod]
         public void TestGetWord()
         {
             Word word = new Word("test");
 
-            string originalWord = word.GetWord();
+            string originalWord = word.GetWord;
             Assert.AreEqual(originalWord, "test");
         }
 
@@ -23,7 +59,7 @@ namespace HangmanGameTest
         {
             Word word = new Word("test");
 
-            string hiddenWord = word.GetHiddenWord();
+            string hiddenWord = word.GetHiddenWord;
             Assert.AreEqual(hiddenWord, "_ _ _ _");
         }
 
@@ -110,8 +146,20 @@ namespace HangmanGameTest
             char revealedLetter = word.RevealLetter();
             Assert.AreEqual(revealedLetter, 't');
 
-            string hiddenWord = word.GetHiddenWord();
+            string hiddenWord = word.GetHiddenWord;
             Assert.AreEqual(hiddenWord, "t _ _ t");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TestRevealLetterFromFullyRevealedWord()
+        {
+            Word word = new Word("test");
+
+            char revealedLetter = word.RevealLetter();
+            revealedLetter = word.RevealLetter();
+            revealedLetter = word.RevealLetter();
+            revealedLetter = word.RevealLetter();
         }
     }
 }

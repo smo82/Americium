@@ -1,18 +1,14 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace HangmanGameTest
+﻿namespace HangmanGameTest
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class TopPlayerTest
     {
         [TestMethod]
         public void TestTopPlayerCreation()
         {
-            TopPlayer topPlayer = new TopPlayer("Player1",10);
+            TopPlayer topPlayer = new TopPlayer("Player1", 10);
 
             string playerName = topPlayer.PlayerName;
             Assert.AreEqual(playerName, "Player1");
