@@ -19,4 +19,6 @@ public interface IUserInterface
     string ReadSingleInputLine();
 
     void WriteSingleOutputLine(string message);
+
+    void Clear();
 }

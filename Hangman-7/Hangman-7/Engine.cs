@@ -70,6 +70,7 @@ internal class Engine
 
     public void ProcessSingleLetterEntered(SingleLetterEventArgs singleLetterEventArgs)
     {
+        this.userInterface.Clear();
         char inputLetterToLower = singleLetterEventArgs.Letter;
         if (this.currentWord.CheckForLetter(inputLetterToLower))
         {
@@ -87,6 +88,7 @@ internal class Engine
 
     public void ProcessHelpRequest()
     {
+        this.userInterface.Clear();
         char revealedLetter = this.currentWord.RevealLetter();
         string helpMessage = "OK, I reveal for you the next letter \"" + revealedLetter + "\"";
         this.userInterface.WriteSingleOutputLine(helpMessage);
@@ -95,6 +97,7 @@ internal class Engine
 
     public void ProcessHighscoreRequest()
     {
+        this.userInterface.Clear();
         this.userInterface.WriteSingleOutputLine("Scoreboard: ");
 
         if (highScoreBoard.HighScoreCount == 0)
@@ -116,17 +119,20 @@ internal class Engine
 
     public void ProcessGameRestart()
     {
+        this.userInterface.Clear();
         this.userInterface.WriteSingleOutputLine("Game is Restarted");
         this.restart = true;
     }
 
     public void ProcessGameExit()
     {
+        this.userInterface.Clear();
         Environment.Exit(0);
     }
 
     public void ProcessIncorrectInput()
     {
+        this.userInterface.Clear();
         this.userInterface.WriteSingleOutputLine("Incorrect input");
         this.currentMistakesCount++;
     }

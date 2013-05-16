@@ -52,6 +52,11 @@ public class ConsoleInterface : IUserInterface
     {
         Console.WriteLine(output);
     }
+
+    public void Clear()
+    {
+        Console.Clear();
+    }
     
     private void ProcessCommand(string command)
     {
