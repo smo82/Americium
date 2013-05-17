@@ -34,7 +34,7 @@ internal class Engine
     /// <summary>
     /// The user interface object to be used
     /// </summary>
-    private readonly IUserInterface userInterface;
+    private readonly IUserInterface USER_INTERFACE;
 
     /// <summary>
     /// The current HighScore board of the game
@@ -67,7 +67,7 @@ internal class Engine
     /// <param name="userInterface">This is the user interface that the engine will be using</param>
     public Engine(IUserInterface userInterface)
     {
-        this.userInterface = userInterface;
+        this.USER_INTERFACE = userInterface;
         this.ConnectEngineWithUserInterface();
     }
 
@@ -90,16 +90,16 @@ internal class Engine
     {
         while (true)
         {
-            this.userInterface.WriteSingleOutputLine(WELCOME_MESSAGE);
+            this.USER_INTERFACE.WriteSingleOutputLine(WELCOME_MESSAGE);
 
             this.currentMistakesCount = 0;
 
-            string playedWord = GetRandomWord();
-            this.currentWord = new Word(playedWord);
+            string randomWord = GetRandomWord();
+            this.currentWord = new Word(randomWord);
 
             while (!this.currentWord.WordIsFound())
             {
-                this.userInterface.GetUserInput(new WordData(this.currentWord));
+                this.USER_INTERFACE.GetUserInput(new WordData(this.currentWord));
                 if (this.restart)
                 {
                     this.restart = false;
@@ -124,18 +124,18 @@ internal class Engine
     /// <param name="singleLetterEventArgs">The single letter entered by the user</param>
     public void ProcessSingleLetterEntered(SingleLetterEventArgs singleLetterEventArgs)
     {
-        this.userInterface.Clear();
+        this.USER_INTERFACE.Clear();
         char inputLetterToLower = singleLetterEventArgs.Letter;
         if (this.currentWord.CheckForLetter(inputLetterToLower))
         {
             this.currentWord.WriteTheLetter(inputLetterToLower);
             string revealMessage = "Good job! You revealed " + this.currentWord.NumberOfMatches(inputLetterToLower) + " letter";
-            this.userInterface.WriteSingleOutputLine(revealMessage);
+            this.USER_INTERFACE.WriteSingleOutputLine(revealMessage);
         }
         else
         {
             string wrongLetterMessage = "Sorry! There are no unrevealed letters " + "\"" + inputLetterToLower + "\"";
-            this.userInterface.WriteSingleOutputLine(wrongLetterMessage);
+            this.USER_INTERFACE.WriteSingleOutputLine(wrongLetterMessage);
             this.currentMistakesCount++;
         }
     }
@@ -147,10 +147,10 @@ internal class Engine
     /// </summary>
     public void ProcessHelpRequest()
     {
-        this.userInterface.Clear();
+        this.USER_INTERFACE.Clear();
         char revealedLetter = this.currentWord.RevealLetter();
         string helpMessage = "OK, I reveal for you the next letter \"" + revealedLetter + "\"";
-        this.userInterface.WriteSingleOutputLine(helpMessage);
+        this.USER_INTERFACE.WriteSingleOutputLine(helpMessage);
         this.usedHelp = true;
     }
 
@@ -160,12 +160,12 @@ internal class Engine
     /// </summary>
     public void ProcessHighscoreRequest()
     {
-        this.userInterface.Clear();
-        this.userInterface.WriteSingleOutputLine("Scoreboard: ");
+        this.USER_INTERFACE.Clear();
+        this.USER_INTERFACE.WriteSingleOutputLine("Scoreboard: ");
 
         if (this.highScoreBoard.HighScoreCount == 0)
         {
-            this.userInterface.WriteSingleOutputLine("Scoreboard is empty");
+            this.USER_INTERFACE.WriteSingleOutputLine("Scoreboard is empty");
         }
         else
         {
@@ -175,7 +175,7 @@ internal class Engine
             {
                 string playerScoreMessage = highScorePlayerList[playersNumber].PlayerScore.ToString() 
                     + " " + highScorePlayerList[playersNumber].PlayerName;
-                this.userInterface.WriteSingleOutputLine(playerScoreMessage);
+                this.USER_INTERFACE.WriteSingleOutputLine(playerScoreMessage);
             } 
         }
     }
@@ -186,8 +186,8 @@ internal class Engine
     /// </summary>
     public void ProcessGameRestart()
     {
-        this.userInterface.Clear();
-        this.userInterface.WriteSingleOutputLine("Game is Restarted");
+        this.USER_INTERFACE.Clear();
+        this.USER_INTERFACE.WriteSingleOutputLine("Game is Restarted");
         this.restart = true;
     }
 
@@ -197,7 +197,7 @@ internal class Engine
     /// </summary>
     public void ProcessGameExit()
     {
-        this.userInterface.Clear();
+        this.USER_INTERFACE.Clear();
         Environment.Exit(0);
     }
 
@@ -207,8 +207,8 @@ internal class Engine
     /// </summary>
     public void ProcessIncorrectInput()
     {
-        this.userInterface.Clear();
-        this.userInterface.WriteSingleOutputLine("Incorrect input");
+        this.USER_INTERFACE.Clear();
+        this.USER_INTERFACE.WriteSingleOutputLine("Incorrect input");
         this.currentMistakesCount++;
     }
 
@@ -218,9 +218,9 @@ internal class Engine
     /// <returns>Returns the word</returns>
     private static string GetRandomWord()
     {
-        Random randomWord = new Random();
-        string playedWord = WORDS_REPOSITORY[randomWord.Next(0, WORDS_REPOSITORY.Length)];
-        return playedWord;
+        Random randomWordGenerator = new Random();
+        string randomWord = WORDS_REPOSITORY[randomWordGenerator.Next(0, WORDS_REPOSITORY.Length)];
+        return randomWord;
     }
 
     /// <summary>
@@ -228,32 +228,32 @@ internal class Engine
     /// </summary>
     private void ConnectEngineWithUserInterface()
     {
-        this.userInterface.SingleLetterEntered += (sender, eventInfo) =>
+        this.USER_INTERFACE.SingleLetterEntered += (sender, eventInfo) =>
         {
             this.ProcessSingleLetterEntered(eventInfo as SingleLetterEventArgs);
         };
 
-        this.userInterface.HelpRequest += (sender, eventInfo) =>
+        this.USER_INTERFACE.HelpRequest += (sender, eventInfo) =>
         {
             this.ProcessHelpRequest();
         };
 
-        this.userInterface.HighscoreRequest += (sender, eventInfo) =>
+        this.USER_INTERFACE.HighscoreRequest += (sender, eventInfo) =>
         {
             this.ProcessHighscoreRequest();
         };
 
-        this.userInterface.GameRestart += (sender, eventInfo) =>
+        this.USER_INTERFACE.GameRestart += (sender, eventInfo) =>
         {
             this.ProcessGameRestart();
         };
 
-        this.userInterface.GameExit += (sender, eventInfo) =>
+        this.USER_INTERFACE.GameExit += (sender, eventInfo) =>
         {
             this.ProcessGameExit();
         };
 
-        this.userInterface.IncorrectInput += (sender, eventInfo) =>
+        this.USER_INTERFACE.IncorrectInput += (sender, eventInfo) =>
         {
             this.ProcessIncorrectInput();
         };
@@ -265,16 +265,16 @@ internal class Engine
     /// </summary>
     private void ProcessWin()
     {
-        this.userInterface.WriteSingleOutputLine("The secret word is " + this.currentWord.GetHiddenWord);
-        this.userInterface.WriteSingleOutputLine("\nYou won with " + this.currentMistakesCount + " mistakes");
+        this.USER_INTERFACE.WriteSingleOutputLine("The secret word is " + this.currentWord.GetHiddenWord);
+        this.USER_INTERFACE.WriteSingleOutputLine("\nYou won with " + this.currentMistakesCount + " mistakes");
 
         bool betterThanLast = this.highScoreBoard.IsResultHighScore(this.currentMistakesCount);
 
         if (!this.usedHelp && betterThanLast)
         {
-            this.userInterface.WriteSingleOutputLine("\nPlease enter your name for the top scoreboard: ");
+            this.USER_INTERFACE.WriteSingleOutputLine("\nPlease enter your name for the top scoreboard: ");
 
-            string playerName = this.userInterface.ReadSingleInputLine();
+            string playerName = this.USER_INTERFACE.ReadSingleInputLine();
             int playerScore = this.currentMistakesCount;
             TopPlayer newTopPlayer = new TopPlayer(playerName, playerScore);
 
@@ -284,11 +284,11 @@ internal class Engine
         }
         else if (!betterThanLast)
         {
-            this.userInterface.WriteSingleOutputLine(" but your result is lower than top scores\n");
+            this.USER_INTERFACE.WriteSingleOutputLine(" but your result is lower than top scores\n");
         }
         else
         {
-            this.userInterface.WriteSingleOutputLine(" but you have cheated. \nYou are not allowed to enter into the scoreboard.\n");
+            this.USER_INTERFACE.WriteSingleOutputLine(" but you have cheated. \nYou are not allowed to enter into the scoreboard.\n");
         }
     }
 }

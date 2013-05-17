@@ -11,7 +11,7 @@
   <Class Name="Engine">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAEEEAAABIAAIAAAEAAAQAAIAAQAoAAACAAAAM=</HashCode>
+      <HashCode>AAAAABAEEEAAABIAAIAAAEAAAQAAIAQQAoAAECAAAAM=</HashCode>
       <FileName>Engine.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -25,7 +25,7 @@
   <Class Name="HighScoreBoard">
     <Position X="6" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAABAAAAAAAAAAACAgAAAAAIAQ=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAgAAAAAIAQ=</HashCode>
       <FileName>HighScoreBoard.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -39,7 +39,7 @@
   <Class Name="TopPlayer">
     <Position X="6" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
       <FileName>TopPlayer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -53,7 +53,7 @@
   <Struct Name="WordData">
     <Position X="2" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>WordData.cs</FileName>
     </TypeIdentifier>
   </Struct>

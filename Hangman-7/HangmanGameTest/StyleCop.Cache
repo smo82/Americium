@@ -117,9 +117,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <project key="1564075488">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="ConsoleIntefaceTest.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2013.01.11 10:37:58.000</styleCop>
@@ -189,11 +186,14 @@
       </violation>
     </violations>
   </sourcecode>
+  <project key="1564075488">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="WordTest.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2013.01.11 10:37:58.000</styleCop>
       <settingsFile>2012.09.27 20:03:32.000</settingsFile>
-      <sourceFile>2013.05.17 02:44:46.078</sourceFile>
+      <sourceFile>2013.05.17 02:47:07.437</sourceFile>
       <parser>2013.01.11 10:37:58.000</parser>
       <StyleCop.CSharp.DocumentationRules>2013.01.11 10:37:58.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>-630970124</StyleCop.CSharp.DocumentationRules.FilesHashCode>

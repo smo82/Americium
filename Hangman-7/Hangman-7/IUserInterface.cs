@@ -1,7 +1,7 @@
 ﻿using System;
 
 /// <summary>
-/// Represents the User interface used for the Hangman game
+/// Represents the User interfaces used for the Hangman game
 /// </summary>
 public interface IUserInterface
 {
